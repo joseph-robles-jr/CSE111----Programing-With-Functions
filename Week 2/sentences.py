@@ -43,10 +43,11 @@ def get_noun(quantity):
     """
     if quantity == 1:
         words = ["bird", "boy", "car", "cat", "child","dog", "girl", "man", "rabbit", "woman"]
+        
     else:
         words = ["birds", "boys", "cars", "cats", "children", "dogs", "girls", "men", "rabbits", "women"]
-        word = random.choice(words)
-        return word
+    word = random.choice(words)
+    return word
     
 
 def get_verb(quantity, tense):
@@ -90,7 +91,61 @@ def get_verb(quantity, tense):
 
     elif tense == "future":
         words = ["will drink", "will eat", "will grow", "will laugh","will think", "will run", "will sleep", "will talk", "will walk", "will write"]
+    word = random.choice(words)
+    return word
+
+def get_adjective():
     
+    ##### DISCLAIMER ###################################################
+    #                                                                  #
+    #  MICROSOFT COPILOT WAS USED TO GENERATE THIS LIST OF ADJECTIVES  #
+    #                                                                  #
+    ####################################################################
+    """Returns a random Adjective from the list of:
+        "happy" , "sad" , "excited" , "angry" , "joyful" , "nervous" , "calm" , "curious" , "brave" , "grateful"
+    """
+    words = ["happy" , "sad" , "excited" , "angry" , "joyful" , "nervous" , "calm" , "curious" , "brave" , "grateful"]
+    return random.choice(words)
+
+
+def get_preposition():
+    """Return a randomly chosen preposition
+    from this list of prepositions:
+        "about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"
+
+    Return: a randomly chosen preposition.
+    """
+    words = ["about", "above", "across", "after", "along","around", "at", "before", "behind", "below", "beyond", "by", "despite", "except", "for", "from", "in", "into", "near", "of", "off", "on", "onto", "out", "over", "past", "to", "under", "with", "without"]
+    
+    word = random.choice(words)
+    return word
+
+
+def get_prepositional_phrase(quantity, tense):
+    """Build and return a prepositional phrase composed
+    of three words: a preposition, a determiner, and a
+    noun by calling the get_preposition, get_determiner,
+    and get_noun functions.
+
+    Parameter
+        quantity: an integer that determines if the
+            determiner and noun in the prepositional
+            phrase returned from this function should
+            be single or pluaral.
+    Return: a prepositional phrase.
+    """
+    determiner = get_determiner(quantity,) 
+    preposition = get_preposition()
+    verb = get_verb(quantity, tense)
+    noun = get_noun(quantity)
+    return (preposition + ' '+ determiner +' '+ noun)
+
+
 
 def make_sentence(quantity, tense):
     """Build and return a sentence with three words:
@@ -100,4 +155,38 @@ def make_sentence(quantity, tense):
     quantity and tense of the verb will match the number
     and tense in the quantity and tense parameters.
     """
+    determiner = str(get_determiner(quantity))
+    noun = str(get_noun(quantity))
+    verb = str(get_verb(quantity, tense))
+    preposition = get_prepositional_phrase(quantity,tense)
+    adjective = get_adjective()
+    #should capitalize and end it with a period
+    return (determiner +' '+ adjective +' '+ noun + ' ' + verb + ' ' + preposition).capitalize() + "."
+
+    
+    
+def main():
+    print_me = make_sentence(1, 'past')
+    print(f'{print_me}')
+    
+    print_me = make_sentence(1, 'present')
+    print(f'{print_me}')
+    
+    print_me = make_sentence(1, 'future')
+    print(f'{print_me}')
+    
+    print_me = make_sentence(2, 'past')
+    print(f'{print_me}')
+    
+    print_me = make_sentence(2, 'present')
+    print(f'{print_me}')
+    
+    print_me = make_sentence(2, 'future')
+    print(f'{print_me}')
+    
+    
+main()
+        
+    
+    
     
