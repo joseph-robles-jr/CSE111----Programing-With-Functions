@@ -3,3 +3,6 @@
 *.json
 *.config
 volumes.txt
+.pytest_cache
+*__pycache__
+*_pycache_
