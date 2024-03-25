@@ -176,22 +176,6 @@ def make_periodic_table():
     
     return periodic_table_dict
     
-
-def main_old():
-    
-    periodic_return = make_periodic_table()
-        #Goes to indexes in list
-    
-    for index in periodic_return:
-
-        name = index[NAMES_INDEX]
-        mass = index[ATOMIC_MASS]
-            
-        print(f'{name} {mass}')
-        
-        
-        
-        
         
         
 def main():
